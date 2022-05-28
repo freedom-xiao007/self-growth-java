@@ -6,6 +6,9 @@ import lombok.Data;
 
 import java.util.Date;
 
+/**
+ * 用户信息
+ */
 @Data
 @Builder
 @TableName("user_info")
