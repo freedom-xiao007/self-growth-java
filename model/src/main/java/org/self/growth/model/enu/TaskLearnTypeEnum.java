@@ -1,4 +1,4 @@
-package com.self.growth.task.enums;
+package org.self.growth.model.enu;
 
 import java.util.Arrays;
 import java.util.List;

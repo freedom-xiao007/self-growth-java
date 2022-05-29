@@ -1,7 +1,8 @@
 package com.self.growth.task.controllers;
 
-import com.self.growth.task.entity.TaskConfig;
 import com.self.growth.task.service.TaskService;
+import org.self.growth.model.entity.task.TaskConfig;
+import org.self.growth.model.vo.ResResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,12 +18,22 @@ public class TaskController {
     }
 
     @PostMapping("/update")
-    public void update(@RequestBody TaskConfig config) {
-        taskService.update(config);
+    public ResResult<TaskConfig> update(@RequestBody TaskConfig config) {
+        return ResResult.success(taskService.update(config));
     }
 
     @GetMapping("/list")
-    public List<TaskConfig> list() {
-        return taskService.list();
+    public ResResult<List<TaskConfig>> list() {
+        return ResResult.success(taskService.list());
+    }
+
+    @PostMapping("/deleteAll")
+    public ResResult<Integer> deleteAll() {
+        return ResResult.success(taskService.deleteAll());
+    }
+
+    @PostMapping("/delete")
+    public ResResult<Integer> delete(@RequestParam List<String> ids) {
+        return ResResult.success(taskService.delete(ids));
     }
 }

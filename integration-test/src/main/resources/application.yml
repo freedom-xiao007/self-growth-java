@@ -7,6 +7,8 @@ test:
     # ?????????
     record:
       url: http://localhost:9050
+    task:
+      url: http://localhost:8081
     # ?????????
     auth:
       url: http://localhost:9000
