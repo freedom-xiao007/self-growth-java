@@ -9,21 +9,22 @@
     </parent>
 
     <groupId>com.self.growth</groupId>
-    <artifactId>record</artifactId>
+    <artifactId>integration-test</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>record</name>
-    <description>record</description>
+    <name>integration-test</name>
+    <description>integration-test</description>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <version>3.1.2</version>
         </dependency>
-
         <dependency>
             <groupId>com.self.growth</groupId>
             <artifactId>model</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

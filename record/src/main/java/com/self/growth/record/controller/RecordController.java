@@ -1,9 +1,9 @@
 package com.self.growth.record.controller;
 
-import com.self.growth.record.entity.DailyRecordEntity;
+import org.self.growth.model.entity.DailyRecordEntity;
 import com.self.growth.record.service.RecordService;
-import com.self.growth.record.vo.ResResult;
 import lombok.AllArgsConstructor;
+import org.self.growth.model.vo.ResResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,14 +17,18 @@ public class RecordController {
     private final RecordService recordService;
 
     @PostMapping("/upload")
-    public ResResult<?> upload(@RequestBody DailyRecordEntity record) {
-        record.setUsername("testUser");
-        recordService.upload(record);
-        return ResResult.success("上传成功");
+    public ResResult<String> upload(@RequestBody List<DailyRecordEntity> records) {
+        recordService.upload(records);
+        return ResResult.success(null);
     }
 
     @GetMapping("/list")
     public ResResult<List<DailyRecordEntity>> list() {
         return ResResult.success(recordService.list());
+    }
+
+    @PostMapping("/deleteAll")
+    public ResResult<Long> deleteAll() {
+        return ResResult.success(recordService.deleteAll());
     }
 }

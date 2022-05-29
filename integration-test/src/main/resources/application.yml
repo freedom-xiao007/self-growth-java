@@ -1,0 +1,17 @@
+test:
+  # ???????????
+  login:
+    username: username
+    password: password
+  server:
+    # ?????????
+    record:
+      url: http://localhost:9050
+    # ?????????
+    auth:
+      url: http://localhost:9000
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
