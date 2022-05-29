@@ -1,7 +1,7 @@
 package com.self.growth.integration.test.record;
 
 import com.self.growth.integration.test.BaseServerTest;
-import com.self.growth.integration.test.feign.RecordHelloClient;
+import com.self.growth.integration.test.feign.RecordClient;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -18,14 +18,7 @@ import java.util.List;
 public class RecordServerTest extends BaseServerTest {
 
     @Autowired
-    private RecordHelloClient recordHelloClient;
-
-    @Test
-    public void helloTest() {
-        ResResult<String> res = recordHelloClient.hello();
-        log.info(res.toString());
-        Assertions.assertEquals(200, res.getCode());
-    }
+    private RecordClient recordClient;
 
     @Test
     public void uploadAndClear() {
@@ -37,19 +30,19 @@ public class RecordServerTest extends BaseServerTest {
                         .books(2)
                         .build()
         );
-        ResResult<Void> uploadRes = recordHelloClient.upload(records);
+        ResResult<Void> uploadRes = recordClient.upload(records);
         log.info(uploadRes.toString());
         Assertions.assertEquals(200, uploadRes.getCode());
 
-        ResResult<List<DailyRecordEntity>> listRes = recordHelloClient.list();
+        ResResult<List<DailyRecordEntity>> listRes = recordClient.list();
         log.info(listRes.toString());
         Assertions.assertEquals(2, listRes.getData().size());
 
-        ResResult<Long> deleteRes = recordHelloClient.deleteAll();
+        ResResult<Long> deleteRes = recordClient.deleteAll();
         log.info(deleteRes.toString());
         Assertions.assertEquals(2L, deleteRes.getData());
 
-        listRes = recordHelloClient.list();
+        listRes = recordClient.list();
         log.info(listRes.toString());
         Assertions.assertEquals(0, listRes.getData().size());
     }

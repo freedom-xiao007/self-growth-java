@@ -6,12 +6,12 @@ test:
   server:
     # ?????????
     record:
-      url: http://localhost:9050
+      url: http://localhost/api
     task:
-      url: http://localhost:8081
+      url: http://localhost/api
     # ?????????
     auth:
-      url: http://localhost:9000
+      url: http://localhost
 
 spring:
   main:

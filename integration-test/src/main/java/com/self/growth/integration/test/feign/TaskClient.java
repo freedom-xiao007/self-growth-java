@@ -16,15 +16,15 @@ import java.util.List;
 )
 public interface TaskClient {
 
-    @RequestMapping(method = RequestMethod.POST, value = "/api/task/update")
+    @RequestMapping(method = RequestMethod.POST, value = "/task/update")
     ResResult<TaskConfig> update(@RequestBody TaskConfig config);
 
-    @RequestMapping(method = RequestMethod.GET, value = "/api/task/list")
+    @RequestMapping(method = RequestMethod.GET, value = "/task/list")
     ResResult<List<TaskConfig>> list();
 
-    @RequestMapping(method = RequestMethod.POST, value = "/api/task/delete")
+    @RequestMapping(method = RequestMethod.POST, value = "/task/delete")
     ResResult<Integer> delete(@RequestParam String ids);
 
-    @RequestMapping(method = RequestMethod.POST, value = "/api/task/deleteAll")
+    @RequestMapping(method = RequestMethod.POST, value = "/task/deleteAll")
     ResResult<Integer> deleteAll();
 }

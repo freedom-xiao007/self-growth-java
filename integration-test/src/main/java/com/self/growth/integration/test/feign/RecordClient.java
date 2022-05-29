@@ -13,10 +13,7 @@ import java.util.List;
         value = "RecordHelloFeign",
         url = "${test.server.record.url}"
 )
-public interface RecordHelloClient {
-
-    @RequestMapping(method = RequestMethod.GET, value = "/hello")
-    ResResult<String> hello();
+public interface RecordClient {
 
     @RequestMapping(method = RequestMethod.POST, value = "/record/upload")
     ResResult<Void> upload(@RequestBody List<DailyRecordEntity> records);
