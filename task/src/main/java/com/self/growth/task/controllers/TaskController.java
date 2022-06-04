@@ -36,4 +36,9 @@ public class TaskController {
     public ResResult<Integer> delete(@RequestParam List<String> ids) {
         return ResResult.success(taskService.delete(ids));
     }
+
+    @PostMapping("/sync")
+    public ResResult<List<TaskConfig>> sync(@RequestBody List<TaskConfig> configs) {
+        return ResResult.success(taskService.sync(configs));
+    }
 }
