@@ -5,10 +5,7 @@ import com.self.growth.task.repository.mongo.TaskRepository;
 import org.self.growth.model.entity.task.TaskConfig;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public record TaskService(MySaTokenContext saTokenContext, TaskRepository taskRepository) {
@@ -28,9 +25,17 @@ public record TaskService(MySaTokenContext saTokenContext, TaskRepository taskRe
         return config;
     }
 
-    public List<TaskConfig> list() {
+    public Map<String, List<TaskConfig>> list() {
         final long userId = saTokenContext.loginUserId();
-        return taskRepository.findAllByUserId(userId);
+        List<TaskConfig> tasks = taskRepository.findAllByUserId(userId);
+        Map<String, List<TaskConfig>> groupBy = new HashMap<>(tasks.size());
+        tasks.forEach(t -> {
+            if (!groupBy.containsKey(t.getGroup())) {
+                groupBy.put(t.getGroup(), new ArrayList<>(tasks.size()));
+            }
+            groupBy.get(t.getGroup()).add(t);
+        });
+        return groupBy;
     }
 
     public Integer deleteAll() {

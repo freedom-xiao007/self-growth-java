@@ -6,6 +6,7 @@ import org.self.growth.model.vo.ResResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/task")
@@ -23,7 +24,7 @@ public class TaskController {
     }
 
     @GetMapping("/list")
-    public ResResult<List<TaskConfig>> list() {
+    public ResResult<Map<String, List<TaskConfig>>> list() {
         return ResResult.success(taskService.list());
     }
 
