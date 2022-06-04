@@ -28,6 +28,10 @@ sa-token:
     # Redis服务器连接密码（默认为空）
     password: password
 
+application:
+  auth:
+    need-register-code: true
+
 logging:
   level:
     com.self.growth.auth.mapper: debug

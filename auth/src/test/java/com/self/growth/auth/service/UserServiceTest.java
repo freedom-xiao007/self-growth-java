@@ -44,7 +44,7 @@ public class UserServiceTest {
     public void registryWithErrorCode() {
         Mockito.when(userMapper.selectOne(Mockito.any())).thenReturn(null);
         Mockito.when(mySaTokenContext.getHeardValue(Mockito.any())).thenReturn("-");
-        Mockito.when(registryCodeMapper.selectCount(Mockito.any())).thenReturn(0L);
+        Mockito.when(registryCodeMapper.selectCount(Mockito.any())).thenReturn(0);
         BusinessException e = Assertions.assertThrows(BusinessException.class, () -> userService.login("user", "123456"));
         Assertions.assertEquals("注册邀请码已失效", e.getMessage());
     }
@@ -53,7 +53,7 @@ public class UserServiceTest {
     public void registrySuccess() {
         Mockito.when(userMapper.selectOne(Mockito.any())).thenReturn(null);
         Mockito.when(mySaTokenContext.getHeardValue(Mockito.any())).thenReturn("-");
-        Mockito.when(registryCodeMapper.selectCount(Mockito.any())).thenReturn(1L);
+        Mockito.when(registryCodeMapper.selectCount(Mockito.any())).thenReturn(1);
         Mockito.doAnswer(invocationOnMock -> {
             UserEntity user = invocationOnMock.getArgument(0);
             user.setId(1L);
