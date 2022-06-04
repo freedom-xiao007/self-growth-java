@@ -10,4 +10,6 @@ import java.util.List;
 public interface DailyRecordRepository extends MongoRepository<DailyRecordEntity, String> {
 
     List<DailyRecordEntity> findAllByUserId(final long userId);
+
+    void deleteByUserId(final long userId);
 }

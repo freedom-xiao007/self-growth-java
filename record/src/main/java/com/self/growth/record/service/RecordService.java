@@ -22,6 +22,8 @@ public class RecordService {
 
     public void upload(final List<DailyRecordEntity> record) {
         final long userId = saTokenContext.loginUserId();
+        dailyRecordRepository.deleteByUserId(userId);
+        
         record.forEach(r -> r.setUserId(userId));
         dailyRecordRepository.insert(record);
     }
