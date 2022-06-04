@@ -17,9 +17,8 @@ public class RecordController {
     private final RecordService recordService;
 
     @PostMapping("/upload")
-    public ResResult<String> upload(@RequestBody List<DailyRecordEntity> records) {
-        recordService.upload(records);
-        return ResResult.success(null);
+    public ResResult<List<DailyRecordEntity>> upload(@RequestBody List<DailyRecordEntity> records) {
+        return ResResult.success(recordService.upload(records));
     }
 
     @GetMapping("/list")

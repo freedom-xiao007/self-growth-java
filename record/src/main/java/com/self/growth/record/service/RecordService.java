@@ -5,6 +5,8 @@ import org.self.growth.model.entity.DailyRecordEntity;
 import com.self.growth.record.mongo.DailyRecordRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -20,12 +22,29 @@ public class RecordService {
         this.dailyRecordRepository = dailyRecordRepository;
     }
 
-    public void upload(final List<DailyRecordEntity> record) {
+    public List<DailyRecordEntity> upload(final List<DailyRecordEntity> record) {
         final long userId = saTokenContext.loginUserId();
-        dailyRecordRepository.deleteByUserId(userId);
+        List<DailyRecordEntity> old = dailyRecordRepository.findAllByUserId(userId);
+        List<DailyRecordEntity> merge = new ArrayList<>(record.size() + old.size());
+        List<DailyRecordEntity> newRecords = new ArrayList<>(old.size());
+        Set<String> repeatFilter = new HashSet<>();
 
-        record.forEach(r -> r.setUserId(userId));
-        dailyRecordRepository.insert(record);
+        merge.addAll(record);
+        record.forEach(r -> repeatFilter.add(r.getDay()));
+
+        old.forEach(r -> {
+            if (repeatFilter.contains(r.getDay())) {
+                return;
+            }
+            repeatFilter.add(r.getDay());
+            newRecords.add(r);
+            merge.add(r);
+        });
+
+        dailyRecordRepository.deleteByUserId(userId);
+        merge.forEach(r -> r.setUserId(userId));
+        dailyRecordRepository.insert(merge);
+        return newRecords;
     }
 
     public List<DailyRecordEntity> list() {

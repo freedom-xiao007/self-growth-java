@@ -33,6 +33,7 @@ public class DailyRecordEntity {
     private Integer books;
     private String startDate;
     private String endDate;
+    private String day;
 
     private List<DailyLogModel> dailyLogs;
 
