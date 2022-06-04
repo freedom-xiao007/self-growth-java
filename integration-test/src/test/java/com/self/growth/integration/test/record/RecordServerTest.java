@@ -5,7 +5,7 @@ import com.self.growth.integration.test.feign.RecordClient;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.self.growth.model.entity.DailyRecordEntity;
+import org.self.growth.model.entity.record.DailyRecordEntity;
 import org.self.growth.model.vo.ResResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

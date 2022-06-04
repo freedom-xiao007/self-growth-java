@@ -1,7 +1,7 @@
 package com.self.growth.record.service;
 
 import com.self.growth.record.config.MySaTokenContext;
-import org.self.growth.model.entity.DailyRecordEntity;
+import org.self.growth.model.entity.record.DailyRecordEntity;
 import com.self.growth.record.mongo.DailyRecordRepository;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
 package com.self.growth.integration.test.feign;
 
-import org.self.growth.model.entity.DailyRecordEntity;
+import org.self.growth.model.entity.record.DailyRecordEntity;
 import org.self.growth.model.vo.ResResult;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;

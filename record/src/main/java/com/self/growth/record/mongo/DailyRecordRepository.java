@@ -1,6 +1,6 @@
 package com.self.growth.record.mongo;
 
-import org.self.growth.model.entity.DailyRecordEntity;
+import org.self.growth.model.entity.record.DailyRecordEntity;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

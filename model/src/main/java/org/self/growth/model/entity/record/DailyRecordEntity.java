@@ -1,4 +1,4 @@
-package org.self.growth.model.entity;
+package org.self.growth.model.entity.record;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,6 +1,6 @@
 package com.self.growth.record.controller;
 
-import org.self.growth.model.entity.DailyRecordEntity;
+import org.self.growth.model.entity.record.DailyRecordEntity;
 import com.self.growth.record.service.RecordService;
 import lombok.AllArgsConstructor;
 import org.self.growth.model.vo.ResResult;
