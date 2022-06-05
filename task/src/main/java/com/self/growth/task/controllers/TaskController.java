@@ -2,7 +2,10 @@ package com.self.growth.task.controllers;
 
 import com.self.growth.task.service.TaskService;
 import org.self.growth.model.entity.task.TaskConfig;
+import org.self.growth.model.entity.task.TaskDeleteLog;
 import org.self.growth.model.vo.ResResult;
+import org.self.growth.model.vo.task.SyncTaskVo;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -38,8 +41,13 @@ public class TaskController {
         return ResResult.success(taskService.delete(ids));
     }
 
+    @PostMapping("/deleteOne")
+    public ResResult<TaskDeleteLog> deleteOne(@Validated TaskDeleteLog task) {
+        return ResResult.success(taskService.delete(task));
+    }
+
     @PostMapping("/sync")
-    public ResResult<List<TaskConfig>> sync(@RequestBody List<TaskConfig> configs) {
+    public ResResult<SyncTaskVo> sync(@RequestBody List<TaskConfig> configs) {
         return ResResult.success(taskService.sync(configs));
     }
 }

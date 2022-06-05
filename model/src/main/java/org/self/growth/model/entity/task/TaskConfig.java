@@ -30,4 +30,5 @@ public class TaskConfig {
     private TaskTypeEnum taskTypeEnum;
     private Boolean isComplete;
     private Date completeDate;
+    private Boolean isDelete;
 }
